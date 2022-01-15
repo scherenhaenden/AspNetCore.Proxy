@@ -4,7 +4,7 @@ using AspNetCore.Proxy.Builders;
 using AspNetCore.Proxy.Options;
 using Xunit;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Unit
 {
     public class HttpProxy
     {

@@ -1,20 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using AspNetCore.Proxy.Builders;
+using AspNetCore.Proxy.Core.Models;
+using AspNetCore.Proxy.Helpers;
 using AspNetCore.Proxy.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
 // For unit tests.
 [assembly:InternalsVisibleTo("AspNetCore.Proxy.Tests")]
 
-namespace AspNetCore.Proxy
+namespace AspNetCore.Proxy.Extensions
 {
     /// <summary>
     /// Set of basic extension methods for ASP.NET Core.
@@ -34,9 +36,9 @@ namespace AspNetCore.Proxy
             services.AddRouting();
 
             if(configureProxyClient != null)
-                services.AddHttpClient(Helpers.HttpProxyClientName, configureProxyClient);
+                services.AddHttpClient(Helpers.Helpers.HttpProxyClientName, configureProxyClient);
             else
-                services.AddHttpClient(Helpers.HttpProxyClientName);
+                services.AddHttpClient(Helpers.Helpers.HttpProxyClientName);
 
             return services;
         }
@@ -276,7 +278,7 @@ namespace AspNetCore.Proxy
         {
             var httpProxy = new HttpProxy((c, a) => new ValueTask<string>(httpEndpoint), httpProxyOptions);
             var wsProxy = new WsProxy((c, a) => new ValueTask<string>(wsEndpoint), wsProxyOptions);
-            var proxy = new Builders.Proxy(null, httpProxy, wsProxy);
+            var proxy = new Core.Models.Proxy(null, httpProxy, wsProxy);
             return controller.HttpContext.ExecuteProxyOperationAsync(proxy);
         }
 
@@ -310,7 +312,7 @@ namespace AspNetCore.Proxy
 
         #region Extension Helpers
 
-        internal static async Task ExecuteProxyOperationAsync(this HttpContext context, Builders.Proxy proxy)
+        internal static async Task ExecuteProxyOperationAsync(this HttpContext context, Core.Models.Proxy proxy)
         {
             var isWebSocket = context.WebSockets.IsWebSocketRequest;
             if(isWebSocket && proxy.WsProxy != null)

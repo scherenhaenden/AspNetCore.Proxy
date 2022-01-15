@@ -1,20 +1,19 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AspNetCore.Proxy.Extensions;
+using AspNetCore.Proxy.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using AspNetCore.Proxy;
-using AspNetCore.Proxy.Options;
-using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Readability", "RCS1090", Justification = "Not a library, so no need for `ConfigureAwait`.")]
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Http
 {
     internal class Startup
     {

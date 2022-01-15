@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AspNetCore.Proxy.Builders;
+using AspNetCore.Proxy.Core.Models;
 using Microsoft.AspNetCore.Http;
 
-namespace AspNetCore.Proxy
+namespace AspNetCore.Proxy.Extensions
 {
     internal static class WsExtensions
     {
@@ -37,7 +38,7 @@ namespace AspNetCore.Proxy
 
                 foreach (var headerEntry in context.Request.Headers)
                 {
-                    if (!Helpers.WebSocketNotForwardedHeaders.Contains(headerEntry.Key, StringComparer.OrdinalIgnoreCase))
+                    if (!Helpers.Helpers.WebSocketNotForwardedHeaders.Contains(headerEntry.Key, StringComparer.OrdinalIgnoreCase))
                         socketToEndpoint.Options.SetRequestHeader(headerEntry.Key, headerEntry.Value);
                 }
 

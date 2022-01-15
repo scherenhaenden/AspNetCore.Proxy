@@ -1,15 +1,15 @@
 using System.Threading;
 using System.Threading.Tasks;
+using AspNetCore.Proxy.Extensions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using AspNetCore.Proxy;
-using Microsoft.AspNetCore.Http;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Ws
 {
     public class WsController : ControllerBase
     {

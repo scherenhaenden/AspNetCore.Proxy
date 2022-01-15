@@ -1,9 +1,10 @@
 using System.Threading.Tasks;
+using AspNetCore.Proxy.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Moq;
 using Xunit;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Unit
 {
     public class BasicExtensions
     {
@@ -14,19 +15,19 @@ namespace AspNetCore.Proxy.Tests
 
             var app = Mock.Of<IApplicationBuilder>();
 
-            AspNetCore.Proxy.Basic.RunProxy(app, (c, a) => new ValueTask<string>(endpoint), (c, a) => new ValueTask<string>(endpoint));
-            AspNetCore.Proxy.Basic.RunProxy(app, (c, a) => endpoint, (c, a) =>  endpoint);
-            AspNetCore.Proxy.Basic.RunProxy(app, endpoint, endpoint);
+            Basic.RunProxy(app, (c, a) => new ValueTask<string>(endpoint), (c, a) => new ValueTask<string>(endpoint));
+            Basic.RunProxy(app, (c, a) => endpoint, (c, a) =>  endpoint);
+            Basic.RunProxy(app, endpoint, endpoint);
 
-            AspNetCore.Proxy.Basic.RunHttpProxy(app, b => b.WithEndpoint(endpoint));
-            AspNetCore.Proxy.Basic.RunHttpProxy(app, (c, a) => new ValueTask<string>(endpoint));
-            AspNetCore.Proxy.Basic.RunHttpProxy(app, (c, a) =>  endpoint);
-            AspNetCore.Proxy.Basic.RunHttpProxy(app, endpoint);
+            Basic.RunHttpProxy(app, b => b.WithEndpoint(endpoint));
+            Basic.RunHttpProxy(app, (c, a) => new ValueTask<string>(endpoint));
+            Basic.RunHttpProxy(app, (c, a) =>  endpoint);
+            Basic.RunHttpProxy(app, endpoint);
 
-            AspNetCore.Proxy.Basic.RunWsProxy(app, b => b.WithEndpoint(endpoint));
-            AspNetCore.Proxy.Basic.RunWsProxy(app, (c, a) => new ValueTask<string>(endpoint));
-            AspNetCore.Proxy.Basic.RunWsProxy(app, (c, a) =>  endpoint);
-            AspNetCore.Proxy.Basic.RunWsProxy(app, endpoint);
+            Basic.RunWsProxy(app, b => b.WithEndpoint(endpoint));
+            Basic.RunWsProxy(app, (c, a) => new ValueTask<string>(endpoint));
+            Basic.RunWsProxy(app, (c, a) =>  endpoint);
+            Basic.RunWsProxy(app, endpoint);
         }
 
         [Fact]
@@ -34,7 +35,7 @@ namespace AspNetCore.Proxy.Tests
         {
             const string expected = "http://myaddresswithtoomanyslashes.com";
 
-            var result = AspNetCore.Proxy.Helpers.TrimTrailingSlashes($"{expected}////");
+            var result = Helpers.Helpers.TrimTrailingSlashes($"{expected}////");
 
             Assert.Equal(expected, result);
         }

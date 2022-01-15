@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Http
 {
     public class HttpIntegrationTests
     {

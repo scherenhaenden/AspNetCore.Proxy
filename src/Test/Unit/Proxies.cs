@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AspNetCore.Proxy.Builders;
 using Xunit;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Unit
 {
     public class Proxies
     {
@@ -17,9 +17,9 @@ namespace AspNetCore.Proxy.Tests
             var proxies = ProxiesBuilder.Instance.Map(route, b => b.UseHttp(endpoint)).New().Build() as IEnumerable;
 
             // Some of this is to exercise the enumerator.
-            List<Builders.Proxy> newProxies = new List<Builders.Proxy>();
+            List<Core.Models.Proxy> newProxies = new List<Core.Models.Proxy>();
             foreach(var o in proxies)
-                newProxies.Add(o as Builders.Proxy);
+                newProxies.Add(o as Core.Models.Proxy);
 
             Assert.Single(newProxies);
 

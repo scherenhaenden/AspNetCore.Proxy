@@ -1,14 +1,12 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
+using AspNetCore.Proxy.Extensions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using AspNetCore.Proxy;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.RunProxy
 {
     internal static class RunProxyHelpers
     {

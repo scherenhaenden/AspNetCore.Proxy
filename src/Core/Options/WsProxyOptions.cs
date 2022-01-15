@@ -1,6 +1,7 @@
 using System;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
+using AspNetCore.Proxy.Helpers;
 using Microsoft.AspNetCore.Http;
 
 namespace AspNetCore.Proxy.Options

@@ -1,8 +1,7 @@
-
 using System;
 using Xunit;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Unit
 {
     public class Other
     {
@@ -12,7 +11,7 @@ namespace AspNetCore.Proxy.Tests
             var contentType = "text/plain";
 
             var e = Assert.ThrowsAny<Exception>(() => {
-                var dummy = Helpers.ToHttpContent(null, contentType);
+                var dummy = Helpers.Helpers.ToHttpContent(null, contentType);
             });
 
             Assert.Equal($"Unknown form content type `{contentType}`.", e.Message);

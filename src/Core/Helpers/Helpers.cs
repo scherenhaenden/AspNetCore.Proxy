@@ -4,10 +4,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.AspNetCore.Http;
 
-namespace AspNetCore.Proxy
+namespace AspNetCore.Proxy.Helpers
 {
     /// <summary>
     /// The delegate type for computing an endpoint from a context and set of arguments.

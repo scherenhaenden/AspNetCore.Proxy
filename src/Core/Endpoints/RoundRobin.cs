@@ -1,3 +1,5 @@
+using AspNetCore.Proxy.Helpers;
+
 namespace AspNetCore.Proxy.Endpoints
 {
     /// <summary>

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AspNetCore.Proxy.Builders;
 using Xunit;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Unit
 {
     public class Proxy
     {

@@ -2,12 +2,11 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.Ws
 {
     public class WsServerFixture : IDisposable
     {

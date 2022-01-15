@@ -5,10 +5,11 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using AspNetCore.Proxy.Builders;
+using AspNetCore.Proxy.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AspNetCore.Proxy
+namespace AspNetCore.Proxy.Extensions
 {
     internal static class HttpExtensions
     {
@@ -21,7 +22,7 @@ namespace AspNetCore.Proxy
             {
                 var httpClient = context.RequestServices
                     .GetService<IHttpClientFactory>()
-                    .CreateClient(options?.HttpClientName ?? Helpers.HttpProxyClientName);
+                    .CreateClient(options?.HttpClientName ?? Helpers.Helpers.HttpProxyClientName);
 
                 // If `true`, this proxy call has been intercepted.
                 if(options?.Intercept != null && await options.Intercept(context).ConfigureAwait(false))

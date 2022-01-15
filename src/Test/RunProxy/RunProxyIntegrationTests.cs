@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AspNetCore.Proxy.Tests
+namespace AspNetCore.Proxy.Tests.RunProxy
 {
     public class RunProxyServerFixture : IDisposable
     {
